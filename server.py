@@ -15,6 +15,7 @@ app = Flask(__name__)
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 app.secret_key = os.environ.get('GOOGLE_API_KEY')
+# GOOGLE_API_KEY="AIzaSyDpy3j5SiXwXWrOwNcoxpDJwlhJqRdIYJQ"
 # Access key for Googlemaps API
 # gmaps = googlemaps.Client(key=os.environ['GEOLOCATE_GOOGLE_API'])
 
@@ -30,6 +31,7 @@ app.jinja_env.auto_reload = True
 def show_homepage():
     """Show homepage."""
 
+
     return render_template("homepage.html")
 
 
@@ -37,7 +39,10 @@ def show_homepage():
 def show_gamepage():
     """Show progress of game being played."""
 
+
+
     return render_template("game.html")
+    # , GOOGLE_API_KEY=GOOGLE_API_KEY
 
 
 @app.route('/results')
