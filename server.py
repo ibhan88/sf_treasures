@@ -1,8 +1,8 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-# import geocoder
-# import geojson
+import geocoder
+import geojson
 import googlemaps
 # from Jinja2 import StrictUndefined
 import json
