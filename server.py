@@ -1,9 +1,9 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-# import geocoder
-# import geojson
-# import googlemaps
+import geocoder
+import geojson
+import googlemaps
 # from Jinja2 import StrictUndefined
 import json
 import os
@@ -15,6 +15,7 @@ from helpers import send_message
 app = Flask(__name__)
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+app.secret_key = os.environ.get('GOOGLE_API_KEY')
 # Access key for Googlemaps API
 # gmaps = googlemaps.Client(key=os.environ['GEOLOCATE_GOOGLE_API'])
 
