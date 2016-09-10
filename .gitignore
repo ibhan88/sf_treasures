@@ -7,5 +7,4 @@ env/
 .env/
 secrets.sh
 api.py
-<<<<<<< HEAD
 .git
