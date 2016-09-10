@@ -9,7 +9,7 @@ import json
 import os
 import requests
 import sys
-# from helpers import send_message
+from helpers import send_sms
 
 
 app = Flask(__name__)
@@ -44,13 +44,16 @@ def show_gamepage():
 
     neighborhood = request.args.get("neighborhood")
     num_clues = request.args.get("clues")
-    phone_number = request.args.get("phoneInputTeam")
+    phone_number = request.args.getlist("phoneNumber")
 
-    print "\n\n\n\n\n"
-    print neighborhood
-    print num_clues
+    print "\n\n\n\n"
     print phone_number
-    print "\n\n\n\n\n"
+    print "\n\n\n\n"
+    
+    session["number"] = phone_number
+
+    send_sms(session["number"], "Clue Clue Clue")
+    print "Success! Look out for text messge."
 
     return render_template("game.html")
 
