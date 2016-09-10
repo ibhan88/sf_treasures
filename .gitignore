@@ -1,2 +1,10 @@
-secrets.sh
+.DS_Store
+*._
+.TemporaryItems
+.Trashes
+*.pyc
 env/
+.env/
+secrets.sh
+api.py
+.git
