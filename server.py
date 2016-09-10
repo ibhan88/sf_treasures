@@ -1,15 +1,20 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
-import os
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-import requests
+import geocoder
+import geojson
+import googlemaps
 import json
+import os
+import requests
+import sys
+
 
 app = Flask(__name__)
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
-app.jinja_env.undefined = StrictUndefined
+# app.jinja_env.undefined = StrictUndefined
 
 
 ###############################################################################
