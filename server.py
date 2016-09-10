@@ -16,8 +16,25 @@ app.jinja_env.undefined = StrictUndefined
 
 
 @app.route('/')
-def show_index():
+def show_homepage():
+    """Show homepage."""
 
+    return render_template("homepage.html")
+
+
+@app.route('/game_time')
+    def show_gamepage():
+    """Show progress of game being played."""
+
+    return render_template("game.html")
+
+
+@app.route('/results')
+    def show_winner():
+    """Display winner."""
+
+    return render_template("results.html")
+    
 
 ##########################################################################
 
