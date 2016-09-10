@@ -38,7 +38,7 @@ def show_gamepage():
     """Show progress of game being played."""
 
     body = "Hackathon Test"
-    to = "+14157557230"
+    to = "+13522191440"
     send_message(body, to)
 
     return render_template("game.html")

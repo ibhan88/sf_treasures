@@ -1,32 +1,18 @@
-def load_twilio_config():
-    """Configure Twilio client"""
+import os 
+from twilio.rest import TwilioRestClient
+
+def send_sms():
+    """Configure Twilio client and sends an SMS"""
 
     twilio_account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
     twilio_auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
     twilio_number = os.environ.get('TWILIO_NUMBER')
 
-    if not all([twilio_account_sid, twilio_auth_token, twilio_number]):
-        logger.error(NOT_CONFIGURED_MESSAGE)
-        raise MiddlewareNotUsed
+    client = TwilioRestClient(twilio_account_sid, twilio_auth_token)
+
+    message = client.messages.create(to="+12316851234", from_="+15555555555",
+                                     body="Hello there!")
 
     return (twilio_number, twilio_account_sid, twilio_auth_token)
 
 
-
-class TwilioNotificationsMiddleware(object):
-    """Process all the exceptions in the application"""
-
-    def __init__(self):
-        self.administrators = load_admins_file()
-        self.client = MessageClient()
-
-    def process_exception(self, request, exception):
-        exception_message = str(exception)
-        message_to_send = MESSAGE % exception_message
-
-        for admin in self.administrators:
-            self.client.send_message(message_to_send, admin['phone_number'])
-
-        logger.info('Administrators notified')
-
-        return None
