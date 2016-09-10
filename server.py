@@ -9,6 +9,7 @@ import json
 import os
 import requests
 import sys
+from helpers import send_message
 
 
 app = Flask(__name__)
@@ -37,6 +38,10 @@ def show_homepage():
 def show_gamepage():
     """Show progress of game being played."""
 
+    body = "Hackathon Test"
+    to = "+14157557230"
+    send_message(body, to)
+
     return render_template("game.html")
 
 
@@ -49,8 +54,8 @@ def show_winner():
 
 ##########################################################################
 
-# Listening or requests
-if __name__ == "__main__":
-    # connect_to_db(app)
-    app.run(host="0.0.0.0")
+# # Listening or requests
+# if __name__ == "__main__":
+#     # connect_to_db(app)
+#     app.run(host="0.0.0.0")
 
