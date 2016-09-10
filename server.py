@@ -1,4 +1,5 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
+<<<<<<< HEAD
 
 import os
 from flask import Flask, render_template, request, flash, redirect, session, jsonify

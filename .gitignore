@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> lindsaynchan/master
 .DS_Store
 *._
 .TemporaryItems
@@ -8,4 +11,8 @@ env/
 .env/
 secrets.sh
 api.py
+<<<<<<< HEAD
 .git
+=======
+.git
+>>>>>>> lindsaynchan/master
