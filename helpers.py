@@ -1,3 +1,4 @@
+
 import os
 from twilio.rest import TwilioRestClient
 
@@ -9,6 +10,7 @@ def send_sms(user_number, body):
     twilio_number = os.environ.get('TWILIO_NUMBER')
 
     client = TwilioRestClient(twilio_account_sid, twilio_auth_token)
+
 
     message = client.messages.create(to=user_number,
                                      from_=twilio_number,
