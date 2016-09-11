@@ -8,3 +8,4 @@ env/
 secrets.sh
 api.py
 .git
+requirements.txt
