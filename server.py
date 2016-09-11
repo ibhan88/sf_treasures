@@ -50,10 +50,9 @@ def show_gamepage():
     print phone_number
     print "\n\n\n\n"
     
-    session["number"] = phone_number
 
-    send_sms(session["number"], "Clue Clue Clue")
-    print "Success! Look out for text messge."
+    # send_sms(session["number"], "Clue Clue Clue")
+    # print "Success! Look out for text messge."
 
     return render_template("game.html")
 
