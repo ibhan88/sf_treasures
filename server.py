@@ -2,11 +2,14 @@
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 # from Jinja2 import StrictUndefined
+from model import Leader, connect_to_db
 import json
 import os
 import requests
 import sys
 from helpers import send_sms
+from flask_sqlalchemy import SQLAlchemy
+
 
 
 app = Flask(__name__)
@@ -44,11 +47,11 @@ def show_gamepage():
 
     session["phone_number"] = phone_number
 
-    send_sms(session["phone_number"], "Clue 1")
-    print "Success! Look out for text messge."
+    # send_sms(session["phone_number"], "Clue 1")
+    # print "Success! Look out for text messge."
 
     #query database for leaderboard information and pass object to game.html
-    leaderboard = Leader.session.query.all()
+    leaderboard = Leader.query.all()
 
     return render_template("game.html", leaderboard=leaderboard)
 
@@ -64,6 +67,6 @@ def show_winner():
 
 # # Listening or requests
 if __name__ == "__main__":
-    # connect_to_db(app)
+    connect_to_db(app)
     app.run(host="0.0.0.0")
 

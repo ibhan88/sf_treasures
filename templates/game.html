@@ -62,8 +62,8 @@
             <!-- /.col-md-8 -->
             <div class="col-md-6">
                 <h1>Scavenger Hunt!</h1>
-                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-                <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+                <p>Keep track of your progress...</p>
+                <a class="btn btn-primary btn-lg" href="#">Submit Clue Answer!</a>
             </div>
             <!-- /.col-md-4 -->
         </div>
@@ -81,13 +81,14 @@
   <th>Team Name</th>
   <th>Time</th>
 </tr>
-<tr>
-    <!-- pass in the jinja for loop here -->
-  <td>jinja curlies "Team Pokemon</td>
-  <td>jinja curlies time</td>
-    <!-- end the jinja for loop here -->
-</tr>
-
+{% for team in leaderboard | sort(attribute='total_minutes') %}
+    <tr>
+        <!-- pass in the jinja for loop here -->
+      <td>{{ team.team_name }}</td>
+      <td>{{ team.total_minutes }}</td>
+        <!-- end the jinja for loop here -->
+    </tr>
+{% endfor %}
 <!-- End the table -->
 
     

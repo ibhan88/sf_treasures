@@ -1,6 +1,7 @@
 from model import Artist, Art, ParkType, Park, Leader
 from model import connect_to_db, db
 from server import app
+from flask_sqlalchemy import SQLAlchemy
 
 import requests
 
