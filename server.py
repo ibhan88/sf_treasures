@@ -39,7 +39,8 @@ def show_gamepage():
     """Show progress of game being played."""
 
     neighborhood = request.args.get("neighborhood")
-    num_clues = request.args.get("clues")
+    num_clues = int(request.args.get("clues"))
+    team_name = request.args.get("teamName")
     #list of unicode items
     phone_number_list = request.args.getlist("phoneNumber")
 
@@ -53,7 +54,7 @@ def show_gamepage():
     #query database for leaderboard information and pass object to game.html
     leaderboard = Leader.query.all()
 
-    return render_template("game.html", leaderboard=leaderboard)
+    return render_template("game.html", leaderboard=leaderboard, team_name=team_name, num_clues=num_clues)
 
 
 @app.route('/results')
