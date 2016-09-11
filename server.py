@@ -1,8 +1,14 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
+<<<<<<< HEAD
 # from Jinja2 import StrictUndefined
 from model import Leader, connect_to_db
+=======
+from Jinja2 import StrictUndefined
+
+import geojson
+>>>>>>> aroseartist-master
 import json
 import os
 import requests
@@ -16,7 +22,10 @@ app = Flask(__name__)
 
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+<<<<<<< HEAD
 
+=======
+>>>>>>> aroseartist-master
 
 # Ensures undefined variables in jinja raise an error
 # app.jinja_env.undefined = StrictUndefined
@@ -54,7 +63,11 @@ def show_gamepage():
     #query database for leaderboard information and pass object to game.html
     leaderboard = Leader.query.all()
 
+<<<<<<< HEAD
     return render_template("game.html", leaderboard=leaderboard, team_name=team_name, num_clues=num_clues)
+=======
+    return render_template("game.html")
+>>>>>>> aroseartist-master
 
 
 @app.route('/results')

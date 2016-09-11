@@ -6,6 +6,7 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.23.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.23.0/mapbox-gl.css' rel='stylesheet' />
 
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +19,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/small-business.css" rel="stylesheet">
+    <link href="/static/css/game.css" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,19 +50,23 @@
             <div class="col-md-6">
                 <!-- <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt=""> -->
 
-                <div id="map"></div>
-                <div id='map' style='width: 400px; height: 300px;'></div>
+            <div id="map"></div>
+            <div id='map' style='width: 700px; height: 400px;'></div>
                 <script>
                     mapboxgl.accessToken = 'pk.eyJ1Ijoic2YtdHJlYXN1cmUiLCJhIjoiY2lzeHQweHo5MGFrejJ6a2hoZXpybWdvZSJ9.9YGAsX45E8bY-r_MGA92Ew';
                     var map = new mapboxgl.Map({
-                        container: 'map',
-                        style: 'mapbox://styles/mapbox/streets-v9'
+                    container: 'map',
+                    center: [-122.441868, 37.766723],
+                    zoom: 12,
+                    trackResize: true,
+                    style: 'mapbox://styles/sf-treasure/cisxtqkhf004m2wo0njo3lxgz'
                     });
+                    map.scrollZoom.disable();
                 </script>
-                </div>
+            </div>
             <!-- /.col-md-8 -->
             <div class="col-md-6">
-                <h1>Scavenger Hunt!</h1>
+                <h1>Enjoy Your Adventure!</h1>
                 <h3>{{ team_name }}</h3>
                 <table class="w3-table w3-centered w3-table-all">
                     <tr>
@@ -78,9 +83,8 @@
                     {% endfor %}
                 </table>
                 <a class="btn btn-primary btn-lg" href="#">Submit Clue Answer!</a>
-            </div>
             <!-- /.col-md-4 -->
-        </div>
+            </div>
 
         </div>
         <!-- /.row -->
@@ -114,7 +118,7 @@
     <script src="/static/js/bootstrap.min.js"></script>
 
     <script src="/static/js/map.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY&callback=initMap"></script>
+
 
 </body>
 
