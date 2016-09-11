@@ -76,13 +76,14 @@
                         <tr>
                             <!-- pass in the jinja for loop here -->
                           <td>{{ count }}</td>
+                          <td>{{ t.clue }}</td>
                           <td>
                             {{ t.question }}
                           </td>
-                          <td>
+                          <td id="answer{{ count }} data=">
                             <a class="btn btn-primary btn-lg clue-answer" href="#">Check Answer!</a>
-                            <input type="text" hidden>
-                            <button class="btn btn-primary btn-sm answer" hidden>Submit</button>
+                            <input class="input-answer" type="text" hidden>
+                            <a class="btn btn-primary btn-sm answer" href="/results" hidden>Submit</a>
                           </td>
                             <!-- end the jinja for loop here -->
                         </tr>
@@ -136,8 +137,8 @@
 <script type="text/javascript">
 
     function checked(results) {
-        if (results == "Correct!") {
-            console.log("Yes")
+        if (results.indexOf("Correct!") != -1) {
+            var count = results[0];
         } else {
             console.log("No")
         }
@@ -151,10 +152,11 @@
     $('.answer').on('click', function(evt) {
         var info = {
             'answer': $(this).prev().val(),
-            'question': $(this).parent().prev().text()
+            'question': $(this).parent().prev().text(),
+            'count': $(this).parent().prev().prev().prev().text()
         };
 
-        $.get('/check', info, checked);
+        // $.get('/results', info, checked);
     })
 
 </script>
