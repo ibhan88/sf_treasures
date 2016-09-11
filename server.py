@@ -2,7 +2,8 @@
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 
-from model import Leader, Art, Park, connect_to_db
+from model import Leader, connect_to_db, Park, Art
+
 
 import json
 import os
@@ -102,6 +103,7 @@ def show_gamepage():
     #query database for leaderboard information and pass object to game.html
     leaderboard = Leader.query.all()
 
+
     center_point = midpoint(top_left, bottom_right)
 
     return render_template("game.html", 
@@ -110,6 +112,7 @@ def show_gamepage():
                             num_clues=num_clues,
                             things=things,
                             geojson=geojson,
+                            things=things,
                             center_point=center_point)
 
 
