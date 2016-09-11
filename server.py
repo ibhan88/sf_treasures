@@ -3,7 +3,6 @@
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from Jinja2 import StrictUndefined
 
-import geojson
 # from Jinja2 import StrictUndefined
 import json
 import os
