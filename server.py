@@ -1,9 +1,6 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-# import geocoder
-# import geojson
-# import googlemaps
 # from Jinja2 import StrictUndefined
 import json
 import os
@@ -14,8 +11,9 @@ from helpers import send_sms
 
 app = Flask(__name__)
 
+
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
-app.secret_key = os.environ.get('GOOGLE_API_KEY')
+
 # Access key for Googlemaps API
 # gmaps = googlemaps.Client(key=os.environ['GEOLOCATE_GOOGLE_API'])
 
@@ -44,15 +42,15 @@ def show_gamepage():
 
     neighborhood = request.args.get("neighborhood")
     num_clues = request.args.get("clues")
-    phone_number = request.args.getlist("phoneNumber")
+    #list of unicode items
+    phone_number_list = request.args.getlist("phoneNumber")
 
-    print "\n\n\n\n"
-    print phone_number
-    print "\n\n\n\n"
-    
+    phone_number = "1"+str(phone_number_list[0])+str(phone_number_list[1])+str(phone_number_list[2])
 
-    # send_sms(session["number"], "Clue Clue Clue")
-    # print "Success! Look out for text messge."
+    session["phone_number"] = phone_number
+
+    send_sms(session["phone_number"], "Clue Clue Clue")
+    print "Success! Look out for text messge."
 
     return render_template("game.html")
 
