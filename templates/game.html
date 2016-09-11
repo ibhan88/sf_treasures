@@ -65,15 +65,17 @@
             <!-- /.col-md-8 -->
             <div class="col-md-6">
                 <h1>Enjoy Your Adventure!</h1>
-                <h3>{{ team_name }}</h3>
+                <h3>Team {{ team_name }}</h3>
+
                 <table class="w3-table w3-centered w3-table-all">
                     <tr>
-                      <th>Clue #</th>
+                      <th></th>
+                      <th>Clue</th>
                       <th>Question</th>
-                      <th>Completion Status</th>
+                      <th></th>
                     </tr>
                     {% set count = 1 %}
-                    {% for t in things %}
+                    {% for t in things_list %}
                         <tr>
                             <!-- pass in the jinja for loop here -->
                           <td>{{ count }}</td>
@@ -82,9 +84,9 @@
                             {{ t.question }}
                           </td>
                           <td id="answer{{ count }} data=">
-                            <a class="btn btn-primary btn-lg clue-answer" href="#">Check Answer!</a>
+                            <a class="btn btn-info btn-lg clue-answer" href="#">Check Answer!</a>
                             <input class="input-answer" type="text" hidden>
-                            <a class="btn btn-primary btn-sm answer" href="/results" hidden>Submit</a>
+                            <a class="btn btn-info btn-sm answer" href="/results" hidden>Submit</a>
                           </td>
                             <!-- end the jinja for loop here -->
                         </tr>

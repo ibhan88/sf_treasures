@@ -8,6 +8,7 @@ body,
 html {
     width: 100%;
     height: 100%;
+    font-family: 'Helvetica'!important;
 }
 
 h1,
@@ -16,9 +17,10 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Lobster Two';
+    font-family: 'Lobster Two'!important;
     src: url(../fonts/LobsterTwo.ttf);
 }
+
 
 @font-face {
     font-family: 'Lobster Two';
@@ -32,6 +34,10 @@ h6 {
 .lead {
     font-size: 18px;
     font-weight: 400;
+}
+
+#myHeader {
+    background-image: url(/static/img/sf-header05.jpg);
 }
 
 .intro-header {

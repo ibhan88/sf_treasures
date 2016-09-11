@@ -43,16 +43,16 @@ def show_gamepage():
     num_clues = int(request.args.get("clues"))
     team_name = request.args.get("teamName")
     #list of unicode items
-    phone_number_list = request.args.getlist("phoneNumber")
+    # phone_number_list = request.args.getlist("phoneNumber")
 
-    phone_number = "1"+str(phone_number_list[0])+str(phone_number_list[1])+str(phone_number_list[2])
+    # phone_number = "1"+str(phone_number_list[0])+str(phone_number_list[1])+str(phone_number_list[2])
 
-    session["phone_number"] = phone_number
+    # session["phone_number"] = phone_number
 
     # send_sms(session["phone_number"], "Clue 1")
     # print "Success! Look out for text messge."
 
-    things = Park.query.limit(5)
+    things = Art.query.limit(5)
     things_list = []
     for t in things:
         things_list.append(t)
@@ -111,7 +111,7 @@ def show_gamepage():
                             leaderboard=leaderboard, 
                             team_name=team_name, 
                             num_clues=num_clues,
-                            things=things,
+                            things_list=things_list,
                             geojson=geojson,
                             center_point=center_point)
 

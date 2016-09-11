@@ -6,10 +6,16 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    font-family: 'Helvetica';
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Lobster Two';
+h1, h2, h3, h4, {
+    font-family: 'Lobster Two'!important;
+    src: url(../fonts/LobsterTwo.ttf);
+}
+
+h1, h2, h3, h4, h5, h6, .w3-slim, .w3-wide {
+    font-family: 'Lobster Two'!important; 
     src: url(../fonts/LobsterTwo.ttf);
 }
 
@@ -28,6 +34,10 @@ h1, h2, h3, h4 {
 
 footer {
     padding: 30px 0;
+}
+
+.w3-table {
+    font-family: 'Helvetica';
 }
 
 @media(min-width:768px) {
