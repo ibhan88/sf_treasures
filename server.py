@@ -78,18 +78,20 @@ def check_answer():
 
     answer = request.args.get("answer")
     question = request.args.get("question").strip()
+    count = request.args.get("count")
+    print count
 
     check1 = Park.query.filter_by(question=question).first()
     check2 = Art.query.filter_by(question=question).first()
 
     if check1:
         if answer == check1.answer:
-            return "Correct!"
+            return count + "Correct!"
     elif check2:
         if answer == check2.answer:
-            return "Correct!"
+            return count + "Correct!"
     else:
-        return "Sorry. Try again."
+        return count + "Sorry. Try again."
 
 
 ##########################################################################
