@@ -67,19 +67,30 @@
                 <h3>{{ team_name }}</h3>
                 <table class="w3-table w3-centered w3-table-all">
                     <tr>
-                      <th>Clue</th>
+                      <th>Clue #</th>
+                      <th>Question</th>
                       <th>Completion Status</th>
                     </tr>
-                    {% for n in range(num_clues) %}
+                    {% set count = 1 %}
+                    {% for t in things %}
                         <tr>
                             <!-- pass in the jinja for loop here -->
-                          <td>Clue {{ n+1 }}</td>
-                          <td></td>
+                          <td>{{ count }}</td>
+                          <td>
+                            {{ t.question }}
+                          </td>
+                          <td>
+                            <a class="btn btn-primary btn-lg clue-answer" href="#">Check Answer!</a>
+                            <input type="text" hidden>
+                            <button class="btn btn-primary btn-sm answer" hidden>Submit</button>
+                          </td>
                             <!-- end the jinja for loop here -->
                         </tr>
+                        {% set count = count + 1 %}
                     {% endfor %}
                 </table>
-                <a class="btn btn-primary btn-lg" href="#">Submit Clue Answer!</a>
+
+            </div>
             <!-- /.col-md-4 -->
             </div>
 
@@ -123,5 +134,29 @@
     <script src="/static/js/bootstrap.min.js"></script>
 
 </body>
+<script type="text/javascript">
 
+    function checked(results) {
+        if (results == "Correct!") {
+            console.log("Yes")
+        } else {
+            console.log("No")
+        }
+    }
+
+    $('.clue-answer').on('click', function(evt) {
+        $(this).nextUntil('tr').show();
+        $(this).hide();
+    })
+
+    $('.answer').on('click', function(evt) {
+        var info = {
+            'answer': $(this).prev().val(),
+            'question': $(this).parent().prev().text()
+        };
+
+        $.get('/check', info, checked);
+    })
+
+</script>
 </html>
