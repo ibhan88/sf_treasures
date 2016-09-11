@@ -1,4 +1,4 @@
-from model import Artist, Art, ParkType, Park
+from model import Artist, Art, ParkType, Park, Leader
 from model import connect_to_db, db
 from server import app
 
@@ -101,6 +101,33 @@ def load_parks():
     db.session.commit()
 
 
+def load_sample_teams():
+    """Load sample teams."""
+
+    teams = [
+        ("Balloonicorn", 60),
+        ("Ada", 122),
+        ("Hackbright", 87),
+        ("Team Go", 99),
+        ("Winners", 186),
+        ("Pythoners", 202),
+        ("Yay! Us!", 258),
+        ("Coders", 152),
+        ("WeLovePython", 129),
+        ("SFers", 138)
+    ]
+
+    for team in teams:
+        team_name = team[0]
+        total_minutes = team[1]
+
+        leader = Leader(team_name=team_name,
+                        total_minutes=total_minutes)
+        db.session.add(leader)
+
+    db.session.commit()
+
+
 ###########################################################################
 
 def get_art_data():
@@ -167,3 +194,4 @@ if __name__ == "__main__":
     load_art(data)
     load_parktypes()
     load_parks()
+    load_sample_teams()
