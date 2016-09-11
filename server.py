@@ -49,10 +49,15 @@ def show_gamepage():
 
     session["phone_number"] = phone_number
 
-    send_sms(session["phone_number"], "Clue Clue Clue")
+    send_sms(session["phone_number"], "Clue 1")
     print "Success! Look out for text messge."
 
-    return render_template("game.html")
+    #query database for leaderboard information and pass object to game.html
+    leaderboard = Leader.session.query.all()
+
+    return render_template("game.html", leaderboard=leaderboard)
+
+
 
 
 @app.route('/results')
