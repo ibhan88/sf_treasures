@@ -14,8 +14,6 @@ app = Flask(__name__)
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
-# Access key for Googlemaps API
-# gmaps = googlemaps.Client(key=os.environ['GEOLOCATE_GOOGLE_API'])
 
 # Ensures undefined variables in jinja raise an error
 # app.jinja_env.undefined = StrictUndefined
@@ -29,16 +27,13 @@ app.jinja_env.auto_reload = True
 def show_homepage():
     """Show homepage."""
 
+
     return render_template("homepage.html")
 
 
 @app.route('/game_time')
 def show_gamepage():
     """Show progress of game being played."""
-
-    # body = "Hackathon Test"
-    # to = "+14157557230"
-    # send_message(body, to)
 
     neighborhood = request.args.get("neighborhood")
     num_clues = request.args.get("clues")
@@ -56,8 +51,6 @@ def show_gamepage():
     leaderboard = Leader.session.query.all()
 
     return render_template("game.html", leaderboard=leaderboard)
-
-
 
 
 @app.route('/results')

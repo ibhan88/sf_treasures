@@ -3,6 +3,9 @@
 
 <head>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.23.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.23.0/mapbox-gl.css' rel='stylesheet' />
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="/static/css/small-business.css" rel="stylesheet">
-
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,9 +49,14 @@
             <div class="col-md-6">
                 <!-- <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt=""> -->
                 
-                <div id="map">
-                    
-                </div>
+                <div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2YtdHJlYXN1cmUiLCJhIjoiY2lzeHQweHo5MGFrejJ6a2hoZXpybWdvZSJ9.9YGAsX45E8bY-r_MGA92Ew';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9'
+});
+</script>
             </div>
             <!-- /.col-md-8 -->
             <div class="col-md-6">
@@ -90,11 +98,6 @@
     <script src="/static/js/bootstrap.min.js"></script>
 
     <script src="/static/js/bootstrap.min.js"></script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY&callback=initMap"
-  type="text/javascript"></script>
-
-  <script src="/static/js/map.js"></script>
 
 </body>
 
