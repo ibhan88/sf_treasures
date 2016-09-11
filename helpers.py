@@ -15,3 +15,8 @@ def send_sms(user_number, body):
     message = client.messages.create(to=user_number,
                                      from_=twilio_number,
                                      body=body)
+
+def midpoint(p1, p2):
+    """Find the midpoint of square map."""
+
+    return [(p1[1]+p2[1])/2, (p1[0]+p2[0])/2]

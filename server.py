@@ -1,19 +1,13 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-<<<<<<< HEAD
 # from Jinja2 import StrictUndefined
-from model import Leader, connect_to_db
-=======
-from Jinja2 import StrictUndefined
-
-import geojson
->>>>>>> aroseartist-master
+from model import Leader, Art, Park, connect_to_db
 import json
 import os
 import requests
 import sys
-from helpers import send_sms
+from helpers import send_sms, midpoint
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -22,10 +16,6 @@ app = Flask(__name__)
 
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
-<<<<<<< HEAD
-
-=======
->>>>>>> aroseartist-master
 
 # Ensures undefined variables in jinja raise an error
 # app.jinja_env.undefined = StrictUndefined
@@ -60,14 +50,61 @@ def show_gamepage():
     # send_sms(session["phone_number"], "Clue 1")
     # print "Success! Look out for text messge."
 
+    top_left = [37.795190, -122.413189]
+    bottom_right = [37.782678, -122.393239]
+    art_list = Art.query.filter(Art.latitude < top_left[0], Art.latitude > bottom_right[0]).filter(Art.longitude > top_left[1], Art.longitude < bottom_right[1]).all()
+    parks = Park.query.filter(Park.lat < top_left[0], Park.lat > bottom_right[0]).filter(Park.lon > top_left[1], Park.lon < bottom_right[1]).all()
+
+    geojson = [{
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [art_list[0].longitude,art_list[0].latitude],
+                  "location": art_list[0].title
+                }},
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [art_list[1].longitude,art_list[1].latitude],
+                  "location": art_list[1].title
+                }},
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [art_list[2].longitude,art_list[2].latitude],
+                  "location": art_list[2].title
+                }},
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [parks[0].lon,parks[0].lat],
+                  "location": parks[0].parkname
+                }},
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [parks[1].lon,parks[1].lat],
+                  "location": parks[1].parkname
+              }}]
+
+
+    geojson = jsonify(geojson)
+
     #query database for leaderboard information and pass object to game.html
     leaderboard = Leader.query.all()
 
-<<<<<<< HEAD
-    return render_template("game.html", leaderboard=leaderboard, team_name=team_name, num_clues=num_clues)
-=======
-    return render_template("game.html")
->>>>>>> aroseartist-master
+    center_point = midpoint(top_left, bottom_right)
+
+    return render_template("game.html", 
+                            leaderboard=leaderboard, 
+                            team_name=team_name, 
+                            num_clues=num_clues,
+                            geojson=geojson,
+                            center_point=center_point)
 
 
 @app.route('/results')

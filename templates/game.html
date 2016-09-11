@@ -56,7 +56,7 @@
                     mapboxgl.accessToken = 'pk.eyJ1Ijoic2YtdHJlYXN1cmUiLCJhIjoiY2lzeHQweHo5MGFrejJ6a2hoZXpybWdvZSJ9.9YGAsX45E8bY-r_MGA92Ew';
                     var map = new mapboxgl.Map({
                     container: 'map',
-                    center: [-122.441868, 37.766723],
+                    center: {{ center_point }},
                     zoom: 12,
                     trackResize: true,
                     style: 'mapbox://styles/sf-treasure/cisxtqkhf004m2wo0njo3lxgz'
@@ -116,8 +116,6 @@
     <script src="/static/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/static/js/bootstrap.min.js"></script>
-
-    <script src="/static/js/map.js"></script>
 
 
 </body>
