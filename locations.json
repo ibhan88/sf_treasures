@@ -1,0 +1,42 @@
+[
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-122.4009,37.7855],
+      "location": "Museum of Modern Art"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-122.4037,37.7860],
+      "location": "Jewish Heritage Museum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-122.4587,37.8014],
+      "location": "Walt Disney Family Museum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-122.4074,37.7880],
+      "location": "Union Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-122.3991376,37.79104],
+      "location": "Mechanics Monument"
+    }
+  }
+];

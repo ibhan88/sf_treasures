@@ -3,6 +3,8 @@
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 # from Jinja2 import StrictUndefined
 from model import Leader, Art, Park, connect_to_db
+# from Jinja2 import StrictUndefined
+
 import json
 import os
 import requests

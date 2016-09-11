@@ -10,12 +10,17 @@ html {
     height: 100%;
 }
 
-@font-face {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Lobster Two';
     src: url(../fonts/LobsterTwo.ttf);
 }
 
-h1, h2, h3, h4 {
+@font-face {
     font-family: 'Lobster Two';
     src: url(../fonts/LobsterTwo.ttf);
 }
