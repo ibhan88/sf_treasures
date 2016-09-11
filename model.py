@@ -81,6 +81,22 @@ class Park(db.Model):
     parktype = db.relationship("ParkType", backref=db.backref("parktypes"))
 
 
+class Leader(db.Model):
+    """Records of 10 teams with shortest time."""
+
+    print "Leaders"
+
+    __tablename__ = "leaders"
+
+    leader_id = db.Column(db.Integer,
+                          autoincrement=True,
+                          primary_key=True)
+    team_name = db.Column(db.String(140),
+                          nullable=False)
+    total_minutes = db.Column(db.Integer,
+                              nullable=False)
+
+
 #####   HELPER FUNCTIONS  ######################################################
 
 def connect_to_db(app, db_uri='postgresql:///treasures'):
