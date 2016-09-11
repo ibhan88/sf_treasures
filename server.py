@@ -51,6 +51,7 @@ def show_gamepage():
 
     # send_sms(session["phone_number"], "Clue 1")
     # print "Success! Look out for text messge."
+
     things = Park.query.limit(5)
     things_list = []
     for t in things:
@@ -112,7 +113,6 @@ def show_gamepage():
                             num_clues=num_clues,
                             things=things,
                             geojson=geojson,
-                            things=things,
                             center_point=center_point)
 
 
@@ -120,7 +120,11 @@ def show_gamepage():
 def show_winner():
     """Display winner."""
 
-    return render_template("results.html")
+    #query database for leaderboard information and pass object to game.html
+    leaderboard = Leader.query.all()
+
+    return render_template("results.html",
+                            leaderboard=leaderboard)
 
 
 @app.route('/check')
