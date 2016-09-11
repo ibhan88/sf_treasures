@@ -8,6 +8,16 @@ body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
 }
 
+h1, h2, h3, h4 {
+    font-family: 'Lobster Two';
+    src: url(../fonts/LobsterTwo.ttf);
+}
+
+@font-face {
+    font-family: 'Lobster Two';
+    src: url(../fonts/LobsterTwo.ttf);
+}
+
 .navbar-fixed-top .nav {
     padding: 15px 0;
 }

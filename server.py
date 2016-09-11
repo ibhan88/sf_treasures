@@ -1,10 +1,9 @@
 """SF Treasures - The All-Women Hackathon San Francisco 9/10/16"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-import geocoder
+from Jinja2 import StrictUndefined
+
 import geojson
-import googlemaps
-# from Jinja2 import StrictUndefined
 import json
 import os
 import requests
@@ -14,10 +13,6 @@ import sys
 app = Flask(__name__)
 
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
-app.secret_key = os.environ.get('GOOGLE_API_KEY')
-# GOOGLE_API_KEY="AIzaSyDpy3j5SiXwXWrOwNcoxpDJwlhJqRdIYJQ"
-# Access key for Googlemaps API
-# gmaps = googlemaps.Client(key=os.environ['GEOLOCATE_GOOGLE_API'])
 
 # Ensures undefined variables in jinja raise an error
 # app.jinja_env.undefined = StrictUndefined
@@ -42,7 +37,6 @@ def show_gamepage():
 
 
     return render_template("game.html")
-    # , GOOGLE_API_KEY=GOOGLE_API_KEY
 
 
 @app.route('/results')
