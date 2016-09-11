@@ -2,8 +2,8 @@
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 # from Jinja2 import StrictUndefined
-from model import Leader, Art, Park, connect_to_db
-# from Jinja2 import StrictUndefined
+
+from model import Leader, connect_to_db, Park, Art
 
 import json
 import os
@@ -51,6 +51,10 @@ def show_gamepage():
 
     # send_sms(session["phone_number"], "Clue 1")
     # print "Success! Look out for text messge."
+    things = Park.query.limit(5)
+    things_list = []
+    for t in things:
+        things_list.append(t)
 
     top_left = [37.795190, -122.413189]
     bottom_right = [37.782678, -122.393239]
@@ -99,6 +103,7 @@ def show_gamepage():
     #query database for leaderboard information and pass object to game.html
     leaderboard = Leader.query.all()
 
+
     center_point = midpoint(top_left, bottom_right)
 
     return render_template("game.html", 
@@ -106,6 +111,7 @@ def show_gamepage():
                             team_name=team_name, 
                             num_clues=num_clues,
                             geojson=geojson,
+                            things=things,
                             center_point=center_point)
 
 
@@ -114,7 +120,27 @@ def show_winner():
     """Display winner."""
 
     return render_template("results.html")
-    
+
+
+@app.route('/check')
+def check_answer():
+    """Check submitted answer."""
+
+    answer = request.args.get("answer")
+    question = request.args.get("question").strip()
+
+    check1 = Park.query.filter_by(question=question).first()
+    check2 = Art.query.filter_by(question=question).first()
+
+    if check1:
+        if answer == check1.answer:
+            return "Correct!"
+    elif check2:
+        if answer == check2.answer:
+            return "Correct!"
+    else:
+        return "Sorry. Try again."
+
 
 ##########################################################################
 
